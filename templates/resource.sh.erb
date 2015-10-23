@@ -1,0 +1,17 @@
+#!/bin/bash
+
+NAME="<%= @name %>"
+PROVIDER="<%= @provider %>"
+
+OPTIONS=""
+<% @options.sort.map do |key, value| -%>
+OPTIONS="$OPTIONS --<%= key %> <%= value %>"
+<% end %>
+
+
+if hammer compute-resource info --name "$NAME" > /dev/null
+then
+	hammer compute-resource update --name "$NAME" $OPTIONS
+else
+	hammer compute-resource create --name "$NAME" --provider="$PROVIDER" $OPTIONS
+fi
