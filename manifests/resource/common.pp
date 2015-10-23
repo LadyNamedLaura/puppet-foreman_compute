@@ -1,5 +1,5 @@
 
-define foreman_compute::resource($ensure, $options, $provider) {
+define foreman_compute::resource::common($ensure, $options, $provider) {
   include foreman_compute
   file { "/etc/hammer/foreman_compute/$name.conf.sh":
     ensure  => file,
