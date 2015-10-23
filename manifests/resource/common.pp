@@ -10,5 +10,6 @@ define foreman_compute::resource($ensure, $options, $provider) {
     refreshonly  => true,
     command      => "bash '/etc/hammer/foreman_compute/$name.conf.sh'",
     environment  => 'HOME=/root',
+    require      => Package['foreman-cli'],
   }
 }
